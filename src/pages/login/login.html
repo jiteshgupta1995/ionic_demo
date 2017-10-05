@@ -8,20 +8,21 @@
 <form (ngSubmit)="logForm()">
 	<ion-list>
 		<ion-item>
-    		<ion-label color="primary">Email</ion-label>
-  			<ion-input type="text" placeholder="Enter your email" [(ngModel)]="login.username" name="email" required></ion-input>
+    		<ion-label floating color="primary">Email</ion-label>
+  			<ion-input type="text" [(ngModel)]="login.username" name="email" required></ion-input>
 		</ion-item>
   		<ion-item>
-    		<ion-label color="primary">Password</ion-label>
-      		<ion-input type="password" placeholder="Enter your password" [(ngModel)]="login.password" name="password" required></ion-input>
+    		<ion-label floating color="primary">Password</ion-label>
+      		<ion-input type="password" [(ngModel)]="login.password" name="password" required></ion-input>
   		</ion-item>
   		<ion-item>
-  			<div class="g-recaptcha" data-sitekey="6Ld2KDMUAAAAALbpt98B1b6BJ7V1uLSmGjK9u8gz" on-success="onSuccess()"></div>
+  			<div class="g-recaptcha" data-sitekey="6LfzQTMUAAAAALVwEkwU8IxTZfaEFotnWcfc_0Nf"></div>
 		</ion-item>
 		<ion-item>
-    		<button ion-button type="submit">Login</button>
+    		<button ion-button block type="submit" style="height: 40px;">Login</button>
 		</ion-item>
 	</ion-list>
 </form>
 <button ion-button clear (click)="forgotpass();">Forgot Password</button>
+<button ion-button clear (click)="signup();">New User? Click here</button>
 </ion-content>

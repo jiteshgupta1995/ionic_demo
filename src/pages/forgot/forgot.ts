@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { Http } from '@angular/http';
 
 /**
  * Generated class for the ForgotPage page.
@@ -16,15 +17,25 @@ import { LoginPage } from '../login/login';
 })
 export class ForgotPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ForgotPage');
   }
-  forgot={}
+  forgot={
+  	username: "",
+  	password: ""
+  };
   forgForm(){
-  	console.log("something here");
+  	let em = this.forgot.username;
+    let pass = this.forgot.password;
+
+    this.http.post('http://localhost:8080/spring-mvcApp/customer/forgotpass?email='+em +'&password='+pass).subscribe(data => {
+	    console.log(data);
+	  },(err) => {
+        alert("Error while reset password. Please try again!");
+    });
   }
   login(){
   	this.navCtrl.setRoot(LoginPage, {}, {animate: true, direction: 'forward'});

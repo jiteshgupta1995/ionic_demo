@@ -21,9 +21,13 @@
 	  			<ion-input type="text" placeholder="Enter your email" [(ngModel)]="forgot.username" name="email" required></ion-input>
 			</ion-item>
 			<ion-item>
-	    		<button ion-button type="submit">Reset password</button>
+	    		<ion-label color="primary">New Password</ion-label>
+	  			<ion-input type="text" placeholder="Enter your new password" [(ngModel)]="forgot.password" name="password" required></ion-input>
+			</ion-item>
+			<ion-item>
+	    		<button ion-button full type="submit" style="height: 40px;">Reset password</button>
 			</ion-item>
 		</ion-list>
 	</form>
-	<button ion-button clear (click)="login();">Login!</button>
+	<button ion-button clear (click)="login();">Back to Login</button>
 </ion-content>

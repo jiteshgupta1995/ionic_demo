@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'signup',
@@ -7,30 +9,32 @@ import { NavController } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public http: Http) {
   }
-  signup = {}
+  signup = {
+  	username:"",
+	password:"",
+	firstname:"",
+	lastname:""
+  }
   signupForm() {
   	let em = this.signup.username;
     let pass = this.signup.password;
     let fname = this.signup.firstname;
     let lname = this.signup.lastname;
 
-    this.http.post('https://localhost:8080/spring-mvcApp/signup',
-	{ 
+    this.http.post('http://localhost:8080/spring-mvcApp/customer/signup',{
 	  email : em,
 	  password : pass,
 	  firstName: fname,
 	  lastName: lname
-	},
-	{
-	  headers: { 'Content-Type': 'application/json' }
-	})
-	.then(data => {
-	  console.log(data.data);
-	}).catch(error => {
-	  console.log(error.status);
-	});
+	}).subscribe(data => {
+		alert("Successfully signup Thank you !");
+	},(err) => {
+        alert("Error while signing up. Please try again!");
+    });
+  }
+  login(){
+  	this.navCtrl.setRoot(LoginPage, {}, {animate: true, direction: 'forward'});
   }
 }

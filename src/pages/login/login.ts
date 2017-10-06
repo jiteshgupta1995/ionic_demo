@@ -23,7 +23,7 @@ export class LoginPage {
     let em = this.login.username;
     let pass = this.login.password;
 
-    this.http.post('http://localhost:8080/spring-mvcApp/customer/login?email='+em +'&password='+pass).subscribe(data => {
+    this.http.post('http://localhost:3000/login?email='+em +'&password='+pass).subscribe(data => {
 		this.navCtrl.setRoot(DashboardPage, {}, {animate: true, direction: 'forward'});
 	},(err) => {
         alert("Invalid Email or password. Please try again!");

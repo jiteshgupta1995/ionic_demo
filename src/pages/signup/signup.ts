@@ -23,13 +23,9 @@ export class SignupPage {
     let fname = this.signup.firstname;
     let lname = this.signup.lastname;
 
-    this.http.post('http://localhost:8080/spring-mvcApp/customer/signup',{
-	  email : em,
-	  password : pass,
-	  firstName: fname,
-	  lastName: lname
-	}).subscribe(data => {
+    this.http.post('http://localhost:3000/signup?email='+em+'&password='+pass+'&firstName='+fname+'&lastName='+lname).subscribe(data => {
 		alert("Successfully signup Thank you !");
+		console.log("done");
 	},(err) => {
         alert("Error while signing up. Please try again!");
     });

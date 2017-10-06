@@ -89,7 +89,8 @@ var ForgotPage = (function () {
     ForgotPage.prototype.forgForm = function () {
         var em = this.forgot.username;
         var pass = this.forgot.password;
-        this.http.post('http://localhost:8080/spring-mvcApp/customer/forgotpass?email=' + em + '&password=' + pass).subscribe(function (data) {
+        this.http.post('http://localhost:3000/forgot?email=' + em + '&password=' + pass).subscribe(function (data) {
+            alert("Password reset");
             console.log(data);
         }, function (err) {
             alert("Error while reset password. Please try again!");
@@ -196,13 +197,9 @@ var SignupPage = (function () {
         var pass = this.signup.password;
         var fname = this.signup.firstname;
         var lname = this.signup.lastname;
-        this.http.post('http://localhost:8080/spring-mvcApp/customer/signup', {
-            email: em,
-            password: pass,
-            firstName: fname,
-            lastName: lname
-        }).subscribe(function (data) {
+        this.http.post('http://localhost:3000/signup?email=' + em + '&password=' + pass + '&firstName=' + fname + '&lastName=' + lname).subscribe(function (data) {
             alert("Successfully signup Thank you !");
+            console.log("done");
         }, function (err) {
             alert("Error while signing up. Please try again!");
         });
@@ -400,7 +397,7 @@ var LoginPage = (function () {
         var _this = this;
         var em = this.login.username;
         var pass = this.login.password;
-        this.http.post('http://localhost:8080/spring-mvcApp/customer/login?email=' + em + '&password=' + pass).subscribe(function (data) {
+        this.http.post('http://localhost:3000/login?email=' + em + '&password=' + pass).subscribe(function (data) {
             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__dashboard_dashboard__["a" /* DashboardPage */], {}, { animate: true, direction: 'forward' });
         }, function (err) {
             alert("Invalid Email or password. Please try again!");
@@ -418,9 +415,10 @@ LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'login',template:/*ion-inline-start:"/home/jitesh/Downloads/teqnihome/src/pages/login/login.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="padding">\n<form (ngSubmit)="logForm()">\n	<ion-list>\n		<ion-item>\n    		<ion-label floating color="primary">Email</ion-label>\n  			<ion-input type="text" [(ngModel)]="login.username" name="email" required></ion-input>\n		</ion-item>\n  		<ion-item>\n    		<ion-label floating color="primary">Password</ion-label>\n      		<ion-input type="password" [(ngModel)]="login.password" name="password" required></ion-input>\n  		</ion-item>\n  		<ion-item>\n  			<div class="g-recaptcha" data-sitekey="6LfzQTMUAAAAALVwEkwU8IxTZfaEFotnWcfc_0Nf"></div>\n		</ion-item>\n		<ion-item>\n    		<button ion-button block type="submit" style="height: 40px;">Login</button>\n		</ion-item>\n	</ion-list>\n</form>\n<button ion-button clear (click)="forgotpass();">Forgot Password</button>\n<button ion-button clear (click)="signup();">New User? Click here</button>\n</ion-content>\n'/*ion-inline-end:"/home/jitesh/Downloads/teqnihome/src/pages/login/login.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */]) === "function" && _b || Object])
 ], LoginPage);
 
+var _a, _b;
 //# sourceMappingURL=login.js.map
 
 /***/ })

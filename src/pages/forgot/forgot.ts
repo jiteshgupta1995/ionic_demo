@@ -31,7 +31,8 @@ export class ForgotPage {
   	let em = this.forgot.username;
     let pass = this.forgot.password;
 
-    this.http.post('http://localhost:8080/spring-mvcApp/customer/forgotpass?email='+em +'&password='+pass).subscribe(data => {
+    this.http.post('http://localhost:3000/forgot?email='+em +'&password='+pass).subscribe(data => {
+      alert("Password reset");
 	    console.log(data);
 	  },(err) => {
         alert("Error while reset password. Please try again!");
